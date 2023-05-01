@@ -26,7 +26,7 @@ public class TodoRegisterController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		RequestDispatcher dispatcher =request.getRequestDispatcher("/WEB-INF/views/todo/registerForm.jsp");
+		RequestDispatcher dispatcher =request.getRequestDispatcher("/WEB-INF/views/todo/register.jsp");
 		dispatcher.forward(request, response);
 			}
 

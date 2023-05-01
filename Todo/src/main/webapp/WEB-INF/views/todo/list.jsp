@@ -19,6 +19,10 @@
 
 </ul>
 
+<div>
+${todoList}
+</div>
+
 <a href="${pageContext.request.contextPath}/todo/register">Todo Register</a>
 </body>
 </html>

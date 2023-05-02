@@ -12,7 +12,7 @@ public class ConnectionProvider {
 		
 		//connection 객체 구하기
 		
-		String dbUrl = "jdbc:mysql://127.0.0.1:3306/mydb";
+		String dbUrl = "jdbc:mysql://127.0.0.1:3306/mydb?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8";
 		return DriverManager.getConnection(dbUrl, "root", "14919");
 		
 	}

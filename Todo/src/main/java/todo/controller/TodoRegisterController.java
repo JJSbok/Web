@@ -9,13 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import todo.domain.RequestTodo;
+import todo.service.TodoInsertService;
+
 /**
  * Servlet implementation class TodoRegisterController
  */
 @WebServlet("/todo/register")
 public class TodoRegisterController extends HttpServlet {
        
+    TodoInsertService insertService;
     
+    public TodoRegisterController() {
+    	this.insertService = TodoInsertService.getInstance();
+    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
@@ -38,7 +45,21 @@ public class TodoRegisterController extends HttpServlet {
 		// 입력폼엥서 전달한 데어터를 받아서 처리
 		String todo = request.getParameter("todo");
 		String dueDate = request.getParameter("dueDate");
-		System.out.println(todo + " : " + dueDate);
+		// S ystem.out.println(todo + " : " + dueDate);
+		
+		RequestTodo requestTodo = new RequestTodo(todo, dueDate);
+		
+		
+		// Service에 요청처리
+		int result = insertService.register(requestTodo);
+		
+		if(result > 0 ) {
+			System.out.println("입력 성공 ...");
+		}else {
+			System.out.println("입력 실패 ...");
+		}
+		
+		
 		
 		// redirect : "list"
 		response.sendRedirect("list");  // 외부에서 접속하는 URI
